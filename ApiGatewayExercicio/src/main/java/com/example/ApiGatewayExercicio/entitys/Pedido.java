@@ -27,4 +27,8 @@ public class Pedido {
 
     @Column(name = "CLIENTE_ID")
     private Long clienteId;
+
+    public Pedido(Long id) {
+        this.id = id;
+    }
 }

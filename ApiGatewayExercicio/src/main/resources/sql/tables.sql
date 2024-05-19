@@ -9,7 +9,7 @@ create table pedido(
     cliente_id int8
 );
 
-create sequence PEDIDO_ITEM_SEQ
+create sequence ITEM_PEDIDO_SEQ
 START WITH 1
   INCREMENT BY 1
   MINVALUE 1;

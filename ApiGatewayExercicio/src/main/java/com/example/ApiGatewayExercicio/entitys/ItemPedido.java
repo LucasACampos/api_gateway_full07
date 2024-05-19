@@ -1,5 +1,6 @@
 package com.example.ApiGatewayExercicio.entitys;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,17 +11,17 @@ import lombok.Setter;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "PEDIDO_ITEM")
+@Table(name = "ITEM_PEDIDO")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class PedidoItem {
+public class ItemPedido {
 
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PEDIDO_ITEM_SEQ")
-    @SequenceGenerator(name = "PEDIDO_ITEM_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ITEM_PEDIDO_SEQ")
+    @SequenceGenerator(name = "ITEM_PEDIDO_SEQ", allocationSize = 1)
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
 
@@ -29,6 +30,7 @@ public class PedidoItem {
             referencedColumnName = "NUMERO"
     )
     @ManyToOne
+    @JsonIgnore
     private Pedido pedido;
 
     @Column(name = "INDICE")
