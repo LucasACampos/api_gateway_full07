@@ -49,7 +49,7 @@ public class CommandLineRunnerKongConfig implements CommandLineRunner {
                     new HttpEntity<>(
                             """
                                     {
-                                      "name": "LucasCamposPedidosService",
+                                      "name": "LucasCamposPedidosGatewayService",
                                       "tags": null,
                                       "protocol": "http",
                                       "path": null,
@@ -181,6 +181,7 @@ public class CommandLineRunnerKongConfig implements CommandLineRunner {
                     );
         } catch (Exception e) {
             logger.error("Erro ao configurar kong durante inicialização");
+            return;
         }
 
         logger.info("Kong configurado com sucesso :)");

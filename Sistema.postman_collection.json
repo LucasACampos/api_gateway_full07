@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e240f6fb-b38c-4807-bc69-9c85deb5c465",
+		"_postman_id": "442f4ec5-1c14-4a04-9dd6-01e7518b8645",
 		"name": "Sistema",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "9357111"
@@ -28,7 +28,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"numero\": 1,\n  \"clienteId\": 1\n}",
+					"raw": "{\n  \"numero\": 2,\n  \"clienteId\": 1\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -171,7 +171,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"numero\": 4,\n  \"clienteId\": 1\n}",
+					"raw": "{\n  \"numero\": 10,\n  \"clienteId\": 1\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -216,7 +216,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8000/lucas-campos-pedidos/api/v1/pedido",
+					"raw": "http://localhost:8000/lucas-campos-pedidos/api/v1/pedido/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -226,7 +226,8 @@
 						"lucas-campos-pedidos",
 						"api",
 						"v1",
-						"pedido"
+						"pedido",
+						"1"
 					]
 				}
 			},
