@@ -1,0 +1,183 @@
+{
+	"info": {
+		"_postman_id": "a88090a2-11cb-4aef-8153-5e2598925aea",
+		"name": "KongConfig",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9357111"
+	},
+	"item": [
+		{
+			"name": "New GatewayService",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"pm.environment.set(\"gatewayId\", data.id)"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"LucasCamposPedidosService\",\n  \"tags\": null,\n  \"protocol\": \"http\",\n  \"path\": null,\n  \"read_timeout\": 60000,\n  \"retries\": 5,\n  \"host\": \"localhost\",\n  \"connect_timeout\": 60000,\n  \"ca_certificates\": null,\n  \"client_certificate\": null,\n  \"write_timeout\": 60000,\n  \"port\": 8080\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/default/services",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"default",
+						"services"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Route",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"service\": {\n    \"id\": \"{{gatewayId}}\"\n  },\n  \"name\": \"PedidosApi\",\n  \"paths\": [\n    \"/lucas-campos-pedidos\"\n  ],\n  \"snis\": null,\n  \"hosts\": null,\n  \"methods\": [\n    \"GET\",\n    \"PUT\",\n    \"POST\",\n    \"DELETE\"\n  ],\n  \"headers\": null,\n  \"sources\": null,\n  \"destinations\": null,\n  \"tags\": [],\n  \"regex_priority\": 0,\n  \"path_handling\": \"v0\",\n  \"strip_path\": true,\n  \"preserve_host\": false,\n  \"https_redirect_status_code\": 426,\n  \"protocols\": [\n    \"http\"\n  ],\n  \"request_buffering\": true,\n  \"response_buffering\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/default/routes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"default",
+						"routes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Consumer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"pm.environment.set(\"consumerId\", data.id)"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"consumer-basic\",\n  \"custom_id\": \"consumer-basic\",\n  \"tags\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/default/consumers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"default",
+						"consumers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Basic Auth Plugin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"enabled\": true,\n  \"name\": \"basic-auth\",\n  \"service\": {\"id\": \"{{gatewayId}}\"},\n  \"instance_name\": \"basic-auth\",\n  \"tags\": null,\n  \"protocols\": [\n    \"grpc\",\n    \"grpcs\",\n    \"http\",\n    \"https\",\n    \"ws\",\n    \"wss\"\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/default/plugins",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"default",
+						"plugins"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Bash Auth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"consumer\": \"{{consumerId}}\",\n  \"password\": \"admin\",\n  \"tags\": [\n    \"admin\"\n  ],\n  \"username\": \"admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/default/consumers/{{consumerId}}/basic-auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"default",
+						"consumers",
+						"{{consumerId}}",
+						"basic-auth"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
