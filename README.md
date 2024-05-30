@@ -16,7 +16,7 @@ O arquivo de configuração do kong utilizando a collection do postman é um bac
 A collection do postman Sistema.postman_collection.json possui tanto os end-points do kong quando do projeto spring direto<br/>
 
 O projeto utiliza o banco de dados h2 no modo de salvando em arquivo
-
+<img src="https://raw.githubusercontent.com/LucasACampos/api_gateway_full07/main/gifFuncionamento.gif"/>
 
 # Swagger
 http://localhost:8080/swagger-ui/index.html#/
